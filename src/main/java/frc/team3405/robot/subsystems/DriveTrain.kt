@@ -2,16 +2,17 @@ package frc.team3405.robot.subsystems
 
 import com.ctre.phoenix.motorcontrol.ControlMode
 import com.ctre.phoenix.motorcontrol.can.TalonSRX
+import edu.wpi.first.wpilibj.Talon
 import edu.wpi.first.wpilibj.command.Subsystem
 import frc.team3405.robot.Robot
 import frc.team3405.robot.Xbox
 import frc.team3405.robot.commands.DriveCommand
 
 class DriveTrain : Subsystem() {
-    private val Left1: TalonSRX = TalonSRX(0) //Right Bottom
-    private val Right1: TalonSRX = TalonSRX(1) //Left Top
-    private val Left2: TalonSRX = TalonSRX(2) //Left Bottom
-    private val Right2: TalonSRX = TalonSRX(3) //Right Top
+    private val Left1 = Talon(0) //Right Bottom
+//    private val Right1 = Talon(1) //Left Top
+//    private val Left2 = Talon(2) //Left Bottom
+//    private val Right2 = Talon(3) //Right Top
 
     override fun initDefaultCommand() {
         defaultCommand = DriveCommand()
@@ -24,11 +25,11 @@ class DriveTrain : Subsystem() {
         val left: Double = (y - x) * maxOutput
         val right: Double = (y + x) * maxOutput
 
-        Right1.set(ControlMode.PercentOutput, -right)
-        Right2.set(ControlMode.PercentOutput, -right)
+//        Right1.set(-right)
+//        Right2.set(-right)
 
-        Left1.set(ControlMode.PercentOutput, left)
-        Left2.set(ControlMode.PercentOutput, left)
+        Left1.set(left)
+//        Left2.set(left)
     }
 
     //For Eastmond
@@ -50,10 +51,10 @@ class DriveTrain : Subsystem() {
         val left: Double = leftY * maxOutput
         val right: Double = rightY * maxOutput
 
-        Left1.set(ControlMode.PercentOutput, left)
-        Left2.set(ControlMode.PercentOutput, left)
-        Right1.set(ControlMode.PercentOutput, -right)
-        Right2.set(ControlMode.PercentOutput, -right)
+        Left1.set(left)
+//        Left2.set(left)
+//        Right1.set(-right)
+//        Right2.set(-right)
 
     }
 }

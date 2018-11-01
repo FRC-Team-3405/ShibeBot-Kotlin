@@ -22,7 +22,7 @@ object Xbox {
     const val LeftY = 1
     const val LeftTrigger = 2
     const val RightTrigger = 3
-    const val RightX = 4
+    const val RightX = 3
     const val RightY = 2
 
     const val PovController = 0
