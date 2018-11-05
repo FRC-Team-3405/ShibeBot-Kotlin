@@ -11,9 +11,9 @@ import kotlin.math.pow
 
 class DriveTrain : Subsystem() {
     private val Left1 = Talon(0) //Right Bottom
-//    private val Right1 = Talon(1) //Left Top
-//    private val Left2 = Talon(2) //Left Bottom
-//    private val Right2 = Talon(3) //Right Top
+    private val Right1 = Talon(1) //Left Top
+    private val Left2 = Talon(2) //Left Bottom
+    private val Right2 = Talon(3) //Right Top
 
     override fun initDefaultCommand() {
         defaultCommand = DriveCommand()
@@ -27,9 +27,9 @@ class DriveTrain : Subsystem() {
         val right: Double = (y + x) * maxOutput
 
 //        Right1.set(-right)
-//        Right2.set(-right)
+        Right2.set(-right)
 
-        Left1.set(left)
+//        Left1.set(-left)
 //        Left2.set(left)
     }
 
