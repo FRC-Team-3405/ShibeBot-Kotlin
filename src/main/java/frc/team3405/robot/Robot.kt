@@ -5,10 +5,13 @@ import edu.wpi.first.wpilibj.Joystick
 import edu.wpi.first.wpilibj.command.Scheduler
 import frc.team3405.robot.subsystems.DriveTrain
 import frc.team3405.robot.subsystems.Launcher
+import frc.team3405.robot.subsystems.SmartDashboardSubsystem
+
 class Robot : IterativeRobot() {
     companion object {
         val driveTrain = DriveTrain()
         val Launcher = Launcher()
+        val SmartDashboard = SmartDashboardSubsystem()
         val joystick = XboxController(Joystick(0))
         var ArcadeDrive = true
     }

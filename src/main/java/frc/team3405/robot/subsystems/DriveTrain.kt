@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem
 import frc.team3405.robot.Robot
 import frc.team3405.robot.Xbox
 import frc.team3405.robot.commands.DriveCommand
+import kotlin.math.pow
 
 class DriveTrain : Subsystem() {
     private val Left1 = Talon(0) //Right Bottom
@@ -19,8 +20,8 @@ class DriveTrain : Subsystem() {
     }
 
     fun arcadeDrive() {
-        val x = Robot.joystick.leftX
-        val y = Robot.joystick.leftY
+        val x = Robot.joystick.leftX.pow(2)
+        val y = Robot.joystick.leftY.pow(2)
         val maxOutput = .7
         val left: Double = (y - x) * maxOutput
         val right: Double = (y + x) * maxOutput

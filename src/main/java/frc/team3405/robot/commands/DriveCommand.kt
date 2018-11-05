@@ -3,7 +3,7 @@ package frc.team3405.robot.commands
 import edu.wpi.first.wpilibj.command.Command
 import frc.team3405.robot.Robot
 import frc.team3405.robot.Xbox
-var pressed = false
+var ypressed = false
 class DriveCommand : Command() {
 
     init {
@@ -11,12 +11,12 @@ class DriveCommand : Command() {
     }
 
     override fun execute() {
-        if (Robot.joystick.joystick.getRawButton(Xbox.YButton) && !pressed ) {
-            pressed = true
+        if (Robot.joystick.joystick.getRawButton(Xbox.YButton) && !ypressed ) {
+            ypressed = true
             Robot.ArcadeDrive = Robot.ArcadeDrive.not()
         }
         if (!Robot.joystick.joystick.getRawButton(Xbox.YButton)) {
-            pressed = false
+            ypressed = false
         }
         if(Robot.ArcadeDrive) {
             Robot.driveTrain.arcadeDrive()
