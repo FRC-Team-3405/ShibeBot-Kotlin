@@ -2,6 +2,7 @@ package frc.team3405.robot
 
 import edu.wpi.first.wpilibj.IterativeRobot
 import edu.wpi.first.wpilibj.Joystick
+import edu.wpi.first.wpilibj.Talon
 import edu.wpi.first.wpilibj.command.Scheduler
 import frc.team3405.robot.subsystems.DriveTrain
 import frc.team3405.robot.subsystems.Launcher
@@ -14,6 +15,14 @@ class Robot : IterativeRobot() {
         val SmartDashboard = SmartDashboardSubsystem()
         val joystick = XboxController(Joystick(0))
         var ArcadeDrive = true
+        //motors
+        val left1 = Talon(3)
+        val right1 = Talon(1)
+        val left2 = Talon(0)
+        val right2 = Talon(2)
+        val feeder = Talon(4)
+        val leftLauncher = Talon(7)
+        val rightLauncher = Talon(6)
     }
     override fun robotInit() {}
 

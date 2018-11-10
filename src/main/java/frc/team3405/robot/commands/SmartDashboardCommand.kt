@@ -15,7 +15,7 @@ class SmartDashboardCommand : Command(){
     override fun execute() {
         if (Robot.joystick.joystick.getRawButton(Xbox.XButton) && !xpressed ) {
             xpressed = true
-            enabled = enabled.not()
+            enabled = !enabled
             print("smartdashboard has changed")
         }
         if (!Robot.joystick.joystick.getRawButton(Xbox.XButton)) {

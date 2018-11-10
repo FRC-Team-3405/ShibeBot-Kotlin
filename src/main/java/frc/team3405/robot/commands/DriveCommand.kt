@@ -13,7 +13,7 @@ class DriveCommand : Command() {
     override fun execute() {
         if (Robot.joystick.joystick.getRawButton(Xbox.YButton) && !ypressed ) {
             ypressed = true
-            Robot.ArcadeDrive = Robot.ArcadeDrive.not()
+            Robot.ArcadeDrive = !Robot.ArcadeDrive
         }
         if (!Robot.joystick.joystick.getRawButton(Xbox.YButton)) {
             ypressed = false
