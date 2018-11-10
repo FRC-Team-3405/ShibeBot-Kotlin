@@ -14,6 +14,9 @@ class SmartDashboardSubsystem : Subsystem() {
     private val feeder by lazy{Robot.feeder}
     private val leftLauncher by lazy{Robot.leftLauncher}
     private val rightLauncher by lazy{Robot.rightLauncher}
+    private val switch1 by lazy{Robot.switch1}
+    private val switch2 by lazy{Robot.switch2}
+    private val switch3 by lazy{Robot.switch3}
 //    private val pdp = PowerDistributionPanel()
     override fun initDefaultCommand(){
         defaultCommand = SmartDashboardCommand()
@@ -35,6 +38,10 @@ class SmartDashboardSubsystem : Subsystem() {
         SmartDashboard.putNumber("FeederMotor", feeder.get())
         SmartDashboard.putNumber("LeftLauncherMotor", leftLauncher.get())
         SmartDashboard.putNumber("RightLauncherMotor", rightLauncher.get())
+        //sensors
+        SmartDashboard.putBoolean("Switch1", !switch1.get())
+        SmartDashboard.putBoolean("Switch2", switch2.get())
+        SmartDashboard.putBoolean("Switch3", switch3.get())
         //Power Distro Totals
 /*        SmartDashboard.putNumber("Power Distro Temperature", pdp.temperature)
         SmartDashboard.putNumber("Power Distro Total Current", pdp.totalCurrent)

@@ -10,7 +10,8 @@ class Launcher : Subsystem() {
     private val feeder by lazy {Robot.feeder}
     private val leftLauncher by lazy{ Robot.leftLauncher}
     private val rightLauncher by lazy{ Robot.rightLauncher}
-
+    private var pressed = false
+    private val switch1 by lazy{Robot.switch1}
     override fun initDefaultCommand() {
         defaultCommand = ShootCommand()
     }
@@ -35,22 +36,33 @@ class Launcher : Subsystem() {
         } else {
             feeder.set(0.0)
         }
+        if (Robot.joystick.joystick.getRawButton(Xbox.RightBumper) && !pressed && switch1.get()) {
+            pressed = true
+        } else if (Robot.joystick.joystick.getRawButton(Xbox.RightBumper) && !pressed){
+            feeder.set(feederSpeed)
+        } else {
+            feeder.set(0.0)
+        }
+        if (!Robot.joystick.joystick.getRawButton(Xbox.RightBumper)) {
+            pressed = false
+        }
+
     }
 
     //For Eastmond
     fun tankDrive() {
         print("Tank drive")
-        val maxOutput = .5
+        val maxOutput = .7
         val feederSpeed = .2
         if(Robot.joystick.joystick.getRawButton(Xbox.LeftLowerBumper)) {
             rightLauncher.set(maxOutput)
-            leftLauncher.set(maxOutput)
+            leftLauncher.set(-maxOutput)
         } else {
             rightLauncher.set(0.0)
             leftLauncher.set(0.0)
         }
         if(Robot.joystick.joystick.getRawButton(Xbox.RightLowerBumper)) {
-            feeder.set(feederSpeed)
+            feeder.set(-feederSpeed)
         } else {
             feeder.set(0.0)
         }
