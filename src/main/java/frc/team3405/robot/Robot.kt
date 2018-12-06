@@ -1,13 +1,12 @@
 package frc.team3405.robot
 
-import edu.wpi.first.wpilibj.DigitalInput
-import edu.wpi.first.wpilibj.IterativeRobot
-import edu.wpi.first.wpilibj.Joystick
-import edu.wpi.first.wpilibj.Talon
+import edu.wpi.first.wpilibj.*
 import edu.wpi.first.wpilibj.command.Scheduler
 import frc.team3405.robot.subsystems.DriveTrain
 import frc.team3405.robot.subsystems.Launcher
 import frc.team3405.robot.subsystems.SmartDashboardSubsystem
+import kotlinx.coroutines.experimental.launch
+import org.opencv.core.Mat
 
 class Robot : IterativeRobot() {
     companion object {
@@ -29,7 +28,17 @@ class Robot : IterativeRobot() {
         val switch2 = DigitalInput(1)
         val switch3 = DigitalInput(2)
     }
-    override fun robotInit() {}
+    override fun robotInit() {
+        launch {
+            val camera = CameraServer.getInstance().startAutomaticCapture()
+            camera.setResolution(640, 480)
+            val outputStream = CameraServer.getInstance().putVideo("Front", 640, 480)
+            val source = Mat()
+            while (true) {
+                outputStream.putFrame(source)
+            }
+        }
+    }
 
     override fun disabledInit() {}
 
